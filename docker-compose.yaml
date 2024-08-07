@@ -1,0 +1,18 @@
+version: '3'
+services:
+  node-server:
+    container_name: node-server
+    build: .
+    ports:
+      - 8000:8000
+    environment:
+      - PORT=8000
+      - MONGODB_URL=mongodb://mongo-container/sit-sairahut-uwt-dev
+  mongo:
+    container_name: mongo-container
+    image: mongo:latest
+    volumes:
+      - mongodata:/data/db
+volumes:
+  mongodata:
+    driver: local
