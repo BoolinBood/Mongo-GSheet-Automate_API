@@ -8,11 +8,11 @@ const testConnectionDB = async () => {
   
   try {
     await mongoose.connect(process.env.MONGODB_URL).then((conn) => {
-      console.log(`MongoDB Connection: ✅`)
+      console.log(`MongoDB Connection: ✅`);
       return conn.connection;
     });
   } catch (err) {
-    console.log(`MongoDB Connection: ❌`)
+    console.log(`MongoDB Connection: ❌`);
   }
 }
 
