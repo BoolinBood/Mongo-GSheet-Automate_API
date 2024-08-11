@@ -16,6 +16,7 @@ const addSheetDataToDB = async (sheetName, cellStart, cellEnd, dbModel) => {
   .then(async (rows) => {
     const users = rows.map(row => formatRowToModelObj(dbModel, row));
     await User.insertMany(users).catch(err => console.log(err));
+    console.log(users);
     return users;
   })
   .catch(err => console.log(err));

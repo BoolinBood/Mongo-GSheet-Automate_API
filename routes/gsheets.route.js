@@ -11,8 +11,7 @@ gSheetsRouter.post('/users', (req, res) => {
 
   addSheetDataToDB(sheetName, startCell, endCell, dbModel)
   .then((result) => {
-    console.log(result);
-    res.json(result);
+    res.json(result.users);
   })
   .catch(err => console.log(err));
 });
