@@ -10,16 +10,15 @@ const formatRowToModelObj = (model, row) => {
   return resultObj
 }
 
-const addSheetDataToDB = (sheetName, cellStart, cellEnd, dbModel) => {
-  let users = null;
+const addSheetDataToDB = async (sheetName, cellStart, cellEnd, dbModel) => {
   accessSpreadsheet(sheetName, cellStart, cellEnd)
   .then(result => result.data.values)
   .then(async (rows) => {
-    users = rows.map(row => formatRowToModelObj(dbModel, row));
+    const users = rows.map(row => formatRowToModelObj(dbModel, row));
     await User.insertMany(users).catch(err => console.log(err));
+    return users;
   })
   .catch(err => console.log(err));
-  return users;
 }
 
 module.exports = addSheetDataToDB;
