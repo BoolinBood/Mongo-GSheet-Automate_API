@@ -1,4 +1,3 @@
-const { connectDB, disconnectDB } = require('../utils/mongodbConn');
 const User = require('../models/user.model');
 
 const getAllUsers = async (req, res) => {
@@ -7,6 +6,7 @@ const getAllUsers = async (req, res) => {
       res.json(result);
     });
   } catch (err) {
+    console.log(err);
     res.json({});
   }
 }
