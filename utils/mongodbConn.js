@@ -24,7 +24,7 @@ const connectDB = async () => {
       return conn.connection;
     })
     .catch((err) => {
-      console.log(`MongoDB Connection: ${err}`);
+      console.error(`MongoDB Connection Error: ${err.message}`);
     });
   } catch (err) {
     console.log(`MongoDB Connection: ❌`)
